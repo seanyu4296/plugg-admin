@@ -7,7 +7,11 @@ import configureStore from './store/configureStore';
 
 import App from './components/App.jsx';
 
+import 'bulma/css/bulma.css';
+import './styles/styles.css';
+
 const store = configureStore();
+
 
 
 render(
