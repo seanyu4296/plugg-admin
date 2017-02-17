@@ -1,14 +1,17 @@
 import React, { Component, PropTypes } from 'react';
 import { Table, Column, Cell } from 'fixed-data-table';
-import TextCell from './TextCell.jsx';
+import TextCell from '../TextCell.jsx';
 import moment from 'moment';
 import 'fixed-data-table/dist/fixed-data-table.css';
+import { calculateTableHeight } from '../tablehelpers.js';
+import SingleListing from './SingleListing';
 
-class Dashboard extends Component {
+class Listings extends Component {
   constructor(props, context) {
     super(props, context);
     this.state = {
       listings: [{
+        id: 1234,
         muvrName: "John Wesley Chan",
         shopprName: "Sean Tristan Yu",
         status: "ACTIVE",
@@ -19,6 +22,7 @@ class Dashboard extends Component {
         localShippingDate: moment(),
         stepperCount: 4
       }, {
+        id: 2345,
         muvrName: "John Wesley Chan",
         shopprName: "Sean Tristan Yu",
         status: "ACTIVE",
@@ -30,28 +34,47 @@ class Dashboard extends Component {
         stepperCount: 4
       }]
     }
+    this.onTableRowClick = this.onTableRowClick.bind(this);
   };
+  componentDidMount() {
+    let listings = this.state.listings;
+    let listing = this.state.listings[0]
+    for (var index = 0; index < 100; index++) {
+      listings.push(listing);
+    }
+    this.setState({
+      listings
+    })
+  }
+
+  onTableRowClick(event, index) {
+    let listingId = this.state.listings[index]["id"]
+    console.log(listingId);
+    let baseUrl = this.context.router.match.path;
+    //console.log();
+    this.context.router.push(`${baseUrl}/${listingId}`)
+  }
+
 
   render() {
     return (
       <div>
-        <h1>Dashboard</h1>
+        <h1 className="title is-2">Listings</h1>
+
         <Table
-          onRowClick={(event, index) => {
-            console.log(event, index)
-          }}
+          onRowClick={this.onTableRowClick}
           rowsCount={this.state.listings.length}
           rowHeight={30}
           headerHeight={30}
           width={1100}
-          height={800}>
+          height={600}>
           <Column
             header={<Cell>Muvr</Cell>}
             cell={<TextCell
               data={this.state.listings}
               field="muvrName"
             />}
-            width={160}
+            width={140}
           />
           <Column
             header={<Cell>Shoppr</Cell>}
@@ -59,7 +82,7 @@ class Dashboard extends Component {
               data={this.state.listings}
               field="shopprName"
             />}
-            width={160}
+            width={140}
           />
           <Column
             header={<Cell>Status</Cell>}
@@ -67,7 +90,7 @@ class Dashboard extends Component {
               data={this.state.listings}
               field="status"
             />}
-            width={125}
+            width={80}
           />
           <Column
             header={<Cell>Time Created</Cell>}
@@ -130,21 +153,15 @@ class Dashboard extends Component {
             }
             width={120}
           />
-
         </Table>
-
 
       </div>
     );
   }
 }
 
-Dashboard.contextTypes = {
+Listings.contextTypes = {
   router: PropTypes.object
 }
 
-Dashboard.propTypes = {
-
-};
-
-export default Dashboard;
+export default Listings;

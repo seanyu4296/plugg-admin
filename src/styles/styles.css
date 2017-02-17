@@ -4,3 +4,23 @@
     padding: 10px 5px;
 }
 */
+
+.divider{
+    position:absolute;
+    left:50%;
+    top:10%;
+    bottom:10%;
+    border-left:1px solid black;
+}
+
+.title-border-bottom {
+  border-bottom: 1px solid black;
+}
+
+.key {
+  font-weight: 500
+}
+
+.content-padding {
+  padding: 0px 10px
+}

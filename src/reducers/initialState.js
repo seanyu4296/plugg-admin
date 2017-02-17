@@ -1,6 +1,6 @@
 export default {
-	user: {
+  user: {
 
-	},
-	isLoggedIn: true
+  },
+  isLoggedIn: true
 }

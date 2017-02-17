@@ -1,29 +1,36 @@
 import React, { Component, PropTypes } from 'react';
 import Header from '../common/Header';
-import { Match, Miss, Redirect } from 'react-router';
+import { Route, Switch } from 'react-router-dom';
+import { Redirect } from 'react-router';
+import Dashboard from './Dashboard';
+import Listings from './listings/ListingRoutes';
+import Users from './Users';
 
-const ProtectedRoutes = ({pathname}) => {
-    //interestingly if route is root pathname = "/" so be aware of appending pathname in pattern
-    return (
-        <div>
-            <div className="container">
-                <Header></Header>
-            </div>
-            <div className="container">
-                <Match pattern={`${pathname}`} render={() => <Redirect to={`${pathname}/dashboard`} />} />
-                <Match pattern={`${pathname}/dashboard`} render={() => <div>Dashboard</div>} />
-                <Match pattern={`${pathname}/users`} render={() => <div>Users</div>} />
-                <Match pattern={`${pathname}/listings`} render={() => <div>Listings</div>} />
-                <Miss component={NoMatch} />
-            </div>
-        </div>
-    )
+const ProtectedRoutes = ({match: {path }}) => {
+  //interestingly if route is root pathname = "/" so be aware of appending pathname in pattern
+  //console.log(match);
+  return (
+    <div>
+      <div className="container">
+        <Header></Header>
+      </div>
+      <div className="container" style={{ padding: "20px 40px 0px 40px" }} >
+        <Switch>
+          <Route path={`${path}`} exact render={() => <Redirect to={`${path}/dashboard`} />} />
+          <Route path={`${path}/dashboard`} component={Dashboard} />
+          <Route path={`${path}/users`} component={Users} />
+          <Route path={`${path}/listings`} component={Listings} />
+          <Route component={NoMatch} />
+        </Switch>
+      </div>
+    </div>
+  )
 }
 
 const NoMatch = ({ location }) => (
-    <div>
-        <h3>No match for <code>{location.pathname}</code></h3>
-    </div>
+  <div>
+    <h3>No match for <code>{location.pathname}</code></h3>
+  </div>
 )
 
 export default ProtectedRoutes

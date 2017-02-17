@@ -5,13 +5,13 @@ import * as userActions from '../actions/userActions.js';
 
 
 class Login extends Component {
-    render() {
-        return (
-            <div>
-                <p>LogIn Page</p>
-            </div>
-        );
-    }
+  render() {
+    return (
+      <div>
+
+      </div>
+    );
+  }
 }
 
 
@@ -20,16 +20,16 @@ Login.propTypes = {
 };
 
 function mapStateToProps(state, ownProps) {
-    return {
-        isLoggedIn: state.isLoggedIn
-    }
+  return {
+    isLoggedIn: state.isLoggedIn
+  }
 }
 
 function mapDispatchToProps(dispatch) {
 
-    return {
-        actions: bindActionCreators(userActions, dispatch)
-    }
+  return {
+    actions: bindActionCreators(userActions, dispatch)
+  }
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Login);
