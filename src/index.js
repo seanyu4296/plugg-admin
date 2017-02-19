@@ -2,7 +2,7 @@
 import React from 'react';
 import { render } from 'react-dom';
 import { Provider } from 'react-redux';
-
+import injectTapEventPlugin from 'react-tap-event-plugin';
 import configureStore from './store/configureStore';
 
 import App from './components/App.jsx';
@@ -12,10 +12,10 @@ import './styles/styles.css';
 
 const store = configureStore();
 
-
+injectTapEventPlugin();
 
 render(
-	<Provider store={store}>
-		<App />
-	</Provider>
-	, document.getElementById('app'));
+  <Provider store={store}>
+    <App />
+  </Provider>
+  , document.getElementById('app'));

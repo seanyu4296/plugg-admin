@@ -4,9 +4,9 @@ import { Route, Switch } from 'react-router-dom';
 import { Redirect } from 'react-router';
 import Dashboard from './Dashboard';
 import Listings from './listings/ListingRoutes';
-import Users from './Users';
+import Users from './users/Users';
 
-const ProtectedRoutes = ({match: {path }}) => {
+const ProtectedRoutes = ({match: {path, params }, location}) => {
   //interestingly if route is root pathname = "/" so be aware of appending pathname in pattern
   //console.log(match);
   return (
@@ -15,6 +15,7 @@ const ProtectedRoutes = ({match: {path }}) => {
         <Header></Header>
       </div>
       <div className="container" style={{ padding: "20px 40px 0px 40px" }} >
+
         <Switch>
           <Route path={`${path}`} exact render={() => <Redirect to={`${path}/dashboard`} />} />
           <Route path={`${path}/dashboard`} component={Dashboard} />

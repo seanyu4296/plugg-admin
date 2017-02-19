@@ -59,7 +59,7 @@ class Listings extends Component {
   render() {
     return (
       <div>
-        <h1 className="title is-2">Listings</h1>
+        <h1 className="title is-2 is-value">Listings</h1>
 
         <Table
           onRowClick={this.onTableRowClick}

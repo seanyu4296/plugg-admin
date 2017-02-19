@@ -14,13 +14,37 @@
 }
 
 .title-border-bottom {
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid #DCE0E0;
+  padding-bottom: 10px;
 }
 
-.key {
-  font-weight: 500
+.title-border-top {
+  border-top: 1px solid #DCE0E0;
+  padding-top: 10px;
+}
+.is-key {
+  font-weight: 500;
+  color: #767676
+}
+.is-value {
+  font-weight: 500;
+  color: black
 }
 
 .content-padding {
   padding: 0px 10px
+}
+
+.card-page-container {
+  max-width: 950px;
+  margin: 0 auto
+}
+
+.card-page-container-user {
+  max-width: 875px;
+  margin: 0 auto
+}
+.rating-star {
+    color: #FBBB21;
+    font-size: 14pt
 }

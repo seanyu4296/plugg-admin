@@ -62,9 +62,9 @@ class Header extends Component {
           </span>
 
           <div className="nav-right nav-menu">
-            <Link className="nav-item" to="/protected/users">Users</Link>
-            <Link className="nav-item" to="/protected/listings">Listings</Link>
-            <Link className="nav-item" to="/protected/credentials">Credentials</Link>
+            <Link className="nav-item is-value" to="/protected/users">Users</Link>
+            <Link className="nav-item is-value" to="/protected/listings">Listings</Link>
+            {/*<Link className="nav-item is-value" to="/protected/credentials">Credentials</Link>*/}
             <span className="nav-item" >
               <a className="button is-primary" onClick={this.handleLogout}>
                 <span className="icon">
