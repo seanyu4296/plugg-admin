@@ -3,8 +3,6 @@ import { Table, Column, Cell } from 'fixed-data-table';
 import moment from 'moment';
 import TextCell from '../TextCell.jsx';
 import Rating from 'react-rating';
-import styles from './SingleUser.css';
-import CSSModules from 'react-css-modules';
 //import Breadcrumbs from 'react-breadcrumbs';
 import DeleteUserModal from './DeleteUserModal'
 class SingleUser extends Component {
@@ -107,7 +105,7 @@ class SingleUser extends Component {
 
                 <div className="column" style={{ display: "flex", flexDirection: "column", justifyContent: "center" }}>
 
-                  <p className="title is-3 is-value" styleName="red" >{`${this.state.user.firstName} ${this.state.user.lastName}`}</p>
+                  <p className="title is-3 is-value">{`${this.state.user.firstName} ${this.state.user.lastName}`}</p>
                   <p className="subtitle is-5 is-key">@seanyu4296@gmail.com</p>
                   <div className="columns  title-border-top">
                     <div className="column is-4 is-flex-touch">
@@ -341,4 +339,4 @@ SingleUser.contextTypes = {
   router: PropTypes.object
 }
 
-export default CSSModules(SingleUser, styles);
+export default SingleUser;
