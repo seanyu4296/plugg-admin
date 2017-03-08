@@ -339,4 +339,8 @@ SingleUser.contextTypes = {
   router: PropTypes.object
 }
 
+SingleUser.defaultProps = {
+
+}
+
 export default SingleUser;

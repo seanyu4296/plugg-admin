@@ -5,6 +5,7 @@ class SingleListing extends Component {
     super(props, context);
     this.state = {
       listing: {
+        id: 123,
         muvr: {
           id: 123124,
           name: "Sean Yu",

@@ -1,0 +1,56 @@
+schema {
+  query: RootQueryType
+}
+
+type ListingType {
+  id: ID
+  muvr: UserType
+  shoppr: UserType
+  invoiceUrl: String
+  stepperCount: Int
+  tags: [String]
+  status: String
+  parcelSize: String
+  receivingDate: [String]
+  localShippingDate: String
+  intlCity: String
+  intllPostalCode: String
+  intlRoomNumber: String
+  intlState: String
+  intlStreetAddress: String
+  intlCountry: String
+  intlAddress: String
+  timeCreated: String
+  timePaid: String
+  timeCompleted: String
+}
+
+type RootQueryType {
+  # Plugg Users
+  users: [UserType]
+
+  # Plugg Single User
+  user(id: String!): UserType
+
+  # Plugg Users
+  listings: [ListingType]
+
+  # Plugg Single Listing
+  listing(id: String!): ListingType
+}
+
+type UserType {
+  id: ID
+  firstName: String
+  lastName: String
+  rating: Int
+  email: String
+  paypalEmail: String
+  phStreetAddress: String
+  phStreetAddress2: String
+  phCity: String
+  phProvince: String
+  phPostalCode: String
+  timeCreated: String
+  phFullAddress: String
+}

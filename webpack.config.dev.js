@@ -2,7 +2,6 @@ import webpack from 'webpack';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import autoprefixer from 'autoprefixer';
 import path from 'path';
-
 export default {
   resolve: {
     extensions: ['*', '.js', '.jsx', '.json']
@@ -50,7 +49,7 @@ export default {
   ],
   module: {
     rules: [
-      { test: /\.jsx?$/, exclude: /node_modules/, loaders: ['babel-loader'] },
+      { test: /\.jsx?$/, exclude: /node_modules/, use: [{ loader: 'babel-loader', options: { plugins: [path.join(__dirname, './tools/babelRelayPlugin.js')] } }], },
       { test: /\.eot(\?v=\d+.\d+.\d+)?$/, loader: 'file-loader' },
       { test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: 'url-loader?limit=10000&mimetype=application/font-woff' },
       { test: /\.[ot]tf(\?v=\d+.\d+.\d+)?$/, loader: 'url-loader?limit=10000&mimetype=application/octet-stream' },
