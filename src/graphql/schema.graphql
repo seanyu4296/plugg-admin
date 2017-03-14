@@ -1,11 +1,11 @@
 schema {
-  query: RootQueryType
+  query: RootQuery
 }
 
-type ListingType {
+type Listing {
   id: ID
-  muvr: UserType
-  shoppr: UserType
+  muvr: User
+  shoppr: User
   invoiceUrl: String
   stepperCount: Int
   tags: [String]
@@ -25,21 +25,25 @@ type ListingType {
   timeCompleted: String
 }
 
-type RootQueryType {
-  # Plugg Users
-  users: [UserType]
-
-  # Plugg Single User
-  user(id: String!): UserType
-
-  # Plugg Users
-  listings: [ListingType]
-
-  # Plugg Single Listing
-  listing(id: String!): ListingType
+type RootQuery {
+  store: Store
 }
 
-type UserType {
+type Store {
+  # Plugg Users
+  users: [User]
+
+  # Plugg Single User
+  user(id: String!): User
+
+  # Plugg Users
+  listings: [Listing]
+
+  # Plugg Single Listing
+  listing(id: String!): Listing
+}
+
+type User {
   id: ID
   firstName: String
   lastName: String

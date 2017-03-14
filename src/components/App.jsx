@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react';
+import Relay from 'react-relay';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { BrowserRouter as Router, Link, Route, Redirect, Switch } from 'react-router-dom';
@@ -15,7 +16,7 @@ class App extends Component {
   constructor(props, context) {
     super(props, context);
     this.state = {
-      isLoggedIn: this.props.isLoggedIn
+      isLoggedIn: true
     }
   };
 
@@ -31,6 +32,7 @@ class App extends Component {
   }
 
   render() {
+    console.log(this.props.store)
     return (
       <Router>
         <div>
@@ -58,7 +60,7 @@ App.contextTypes = {
 }
 
 
-const MatchWhenAuthorized = ({component: Component, isLoggedIn, ...rest }) => {
+const MatchWhenAuthorized = ({ component: Component, isLoggedIn, ...rest }) => {
   return (
     <Route {...rest}
       render={(props) => {
@@ -85,7 +87,7 @@ App.propTypes = {
 
 };
 
-function mapStateToProps(state, ownProps) {
+/*function mapStateToProps(state, ownProps) {
   return {
     isLoggedIn: state.isLoggedIn
   }
@@ -96,7 +98,19 @@ function mapDispatchToProps(dispatch) {
   return {
     actions: bindActionCreators(userActions, dispatch)
   }
-}
+}*/
+App = Relay.createContainer(App, {
+  fragments: {
+    store: () => Relay.QL`
+      fragment on Store {
+        listings {
+          id
+        }
+      }
+    `
+  }
+})
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default App
+//export default connect(mapStateToProps, mapDispatchToProps)(App);

@@ -19,7 +19,7 @@ Login.propTypes = {
 
 };
 
-function mapStateToProps(state, ownProps) {
+/*function mapStateToProps(state, ownProps) {
   return {
     isLoggedIn: state.isLoggedIn
   }
@@ -30,6 +30,7 @@ function mapDispatchToProps(dispatch) {
   return {
     actions: bindActionCreators(userActions, dispatch)
   }
-}
+}*/
 
-export default connect(mapStateToProps, mapDispatchToProps)(Login);
+//export default connect(mapStateToProps, mapDispatchToProps)(Login);
+export default Login;

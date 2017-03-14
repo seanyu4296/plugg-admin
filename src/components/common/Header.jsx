@@ -92,7 +92,7 @@ Header.propTypes = {
 Header.contextTypes = {
   router: PropTypes.object
 }
-function mapStateToProps(state, ownProps) {
+/*function mapStateToProps(state, ownProps) {
   return {
     isLoggedIn: state.isLoggedIn
   }
@@ -103,6 +103,8 @@ function mapDispatchToProps(dispatch) {
   return {
     actions: bindActionCreators(userActions, dispatch)
   }
-}
+}*/
 
-export default connect(mapStateToProps, mapDispatchToProps)(Header);
+//export default connect(mapStateToProps, mapDispatchToProps)(Header);
+
+export default Header

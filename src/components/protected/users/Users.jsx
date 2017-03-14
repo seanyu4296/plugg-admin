@@ -23,7 +23,6 @@ class UserTable extends Component {
     super(props, context);
     this.state = {
       selectedUser: {
-
       },
       deleteModalActive: false,
       users: [{

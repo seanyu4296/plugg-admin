@@ -5,6 +5,7 @@ import moment from 'moment';
 import 'fixed-data-table/dist/fixed-data-table.css';
 import { calculateTableHeight } from '../tablehelpers.js';
 import SingleListing from './SingleListing';
+import Relay from 'react-relay';
 
 class Listings extends Component {
   constructor(props, context) {
@@ -57,6 +58,7 @@ class Listings extends Component {
 
 
   render() {
+    console.log(this.props.store)
     return (
       <div>
         <h1 className="title is-2 is-value">Listings</h1>
@@ -164,4 +166,15 @@ Listings.contextTypes = {
   router: PropTypes.object
 }
 
+/*Listings = Relay.createContainer(Listings, {
+  fragments: {
+    store: () => Relay.QL`
+      fragment on Store {
+        listings {
+          id
+        }
+      }
+    `
+  }
+})*/
 export default Listings;
