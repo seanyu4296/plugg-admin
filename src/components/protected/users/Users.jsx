@@ -9,14 +9,14 @@ import RaisedButton from 'material-ui/RaisedButton'
 import moment from 'moment';
 import DeleteUserModal from './DeleteUserModal'
 
-const Users = ({match: {path}}) => {
+/*const Users = ({match: {path}}) => {
   return (
     <div>
       <Route path={`${path}`} exact component={UserTable} />
       <Route path={`${path}/:id`} component={SingleUser} />
     </div>
   );
-}
+}*/
 
 class UserTable extends Component {
   constructor(props, context) {
@@ -131,4 +131,4 @@ UserTable.contextTypes = {
 }
 
 
-export default Users;
+export default UserTable;

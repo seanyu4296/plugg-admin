@@ -42,12 +42,14 @@ const store = configureStore();
 
 injectTapEventPlugin();
 
-render(
+render()
+
+/*render(
   <Relay.RootContainer
     Component={App}
     route={new HomeRoute()}
   />
-  , document.getElementById('app'));
+  , document.getElementById('app'));*/
 
 
 /*render(

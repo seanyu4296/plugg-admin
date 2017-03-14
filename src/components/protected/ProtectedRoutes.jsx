@@ -6,32 +6,18 @@ import Dashboard from './Dashboard';
 import Listings from './listings/ListingRoutes';
 import Users from './users/Users';
 
-const ProtectedRoutes = ({match: {path, params }, location}) => {
-  //interestingly if route is root pathname = "/" so be aware of appending pathname in pattern
-  //console.log(match);
+
+const ProtectedRoutes = ({ children }) => {
   return (
     <div>
       <div className="container">
         <Header></Header>
       </div>
       <div className="container" style={{ padding: "20px 40px 0px 40px" }} >
-
-        <Switch>
-          <Route path={`${path}`} exact render={() => <Redirect to={`${path}/dashboard`} />} />
-          <Route path={`${path}/dashboard`} component={Dashboard} />
-          <Route path={`${path}/users`} component={Users} />
-          <Route path={`${path}/listings`} component={Listings} />
-          <Route component={NoMatch} />
-        </Switch>
+        {children}
       </div>
     </div>
   )
 }
-
-const NoMatch = ({ location }) => (
-  <div>
-    <h3>No match for <code>{location.pathname}</code></h3>
-  </div>
-)
 
 export default ProtectedRoutes

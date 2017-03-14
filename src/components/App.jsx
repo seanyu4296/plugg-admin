@@ -12,7 +12,7 @@ import Login from './Login';
 import ProtectedRoutes from './protected/ProtectedRoutes.jsx';
 
 
-class App extends Component {
+/*class App extends Component {
   constructor(props, context) {
     super(props, context);
     this.state = {
@@ -78,8 +78,17 @@ const MatchWhenAuthorized = ({ component: Component, isLoggedIn, ...rest }) => {
       } />
 
   )
-}
+}*/
 
+class App extends Component {
+  render() {
+    return (
+      <div>
+        {this.props.children}
+      </div>
+    )
+  }
+}
 
 
 
