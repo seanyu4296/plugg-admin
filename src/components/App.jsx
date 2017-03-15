@@ -10,7 +10,8 @@ import * as userActions from '../actions/userActions.js';
 //components
 import Login from './Login';
 import ProtectedRoutes from './protected/ProtectedRoutes.jsx';
-
+import Listings from './protected/listings/Listings';
+import superagent from 'superagent';
 
 class App extends Component {
   constructor(props, context) {
@@ -39,7 +40,7 @@ class App extends Component {
           <Switch>
             <Route path="/" exact render={() => <Redirect to="/protected"></Redirect>} />
             <Route path="/login" exact component={Login}></Route>
-            <MatchWhenAuthorized path="/protected" isLoggedIn={this.state.isLoggedIn} component={ProtectedRoutes} />
+            <MatchWhenAuthorized path="/protected" isLoggedIn={this.state.isLoggedIn} component={ProtectedRoutes} store={this.props.store} />
             <Route component={NoMatch} />
           </Switch>
         </div>
@@ -60,13 +61,13 @@ App.contextTypes = {
 }
 
 
-const MatchWhenAuthorized = ({ component: Component, isLoggedIn, ...rest }) => {
+const MatchWhenAuthorized = ({ component: Component, isLoggedIn, store, ...rest }) => {
   return (
     <Route {...rest}
       render={(props) => {
         return (
           isLoggedIn ? (
-            <Component {...props} />
+            <Component store={store} {...props} />
           ) : (
               <Redirect to={{
                 pathname: '/login',
@@ -105,6 +106,7 @@ App = Relay.createContainer(App, {
       fragment on Store {
         listings {
           id
+          ${Listings.getFragment('store')}
         }
       }
     `

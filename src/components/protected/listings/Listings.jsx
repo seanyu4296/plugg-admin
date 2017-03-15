@@ -166,15 +166,16 @@ Listings.contextTypes = {
   router: PropTypes.object
 }
 
-/*Listings = Relay.createContainer(Listings, {
+Listings = Relay.createContainer(Listings, {
   fragments: {
     store: () => Relay.QL`
-      fragment on Store {
-        listings {
+      fragment on Listing {
+        id
+        muvr {
           id
         }
       }
     `
   }
-})*/
+})
 export default Listings;

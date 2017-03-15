@@ -6,9 +6,10 @@ import Dashboard from './Dashboard';
 import Listings from './listings/ListingRoutes';
 import Users from './users/Users';
 
-const ProtectedRoutes = ({match: {path, params }, location}) => {
+const ProtectedRoutes = ({ match: { path, params }, location, store }) => {
   //interestingly if route is root pathname = "/" so be aware of appending pathname in pattern
   //console.log(match);
+  console.log(store);
   return (
     <div>
       <div className="container">
@@ -20,7 +21,7 @@ const ProtectedRoutes = ({match: {path, params }, location}) => {
           <Route path={`${path}`} exact render={() => <Redirect to={`${path}/dashboard`} />} />
           <Route path={`${path}/dashboard`} component={Dashboard} />
           <Route path={`${path}/users`} component={Users} />
-          <Route path={`${path}/listings`} component={Listings} />
+          <Route path={`${path}/listings`} component={Listings} store={store} />
           <Route component={NoMatch} />
         </Switch>
       </div>

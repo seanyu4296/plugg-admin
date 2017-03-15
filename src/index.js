@@ -40,6 +40,7 @@ HomeRoute.queries = {
 const store = configureStore();
 
 
+
 injectTapEventPlugin();
 
 render(
